@@ -1,6 +1,6 @@
 def just_add(z):
     total = 0
-    for item in range(len(z)):
+    for item in z:
         total += int(item)
     return total
 
@@ -8,7 +8,7 @@ def just_add(z):
 def splitadd(y):
     cut =  [int(item) for item in str(y)]
     total = 0
-    for item in range(len(cut)):
+    for item in cut:
         total += int(item)
     return total
 
@@ -16,12 +16,12 @@ def splitadd(y):
 def validate(x):
     card = list(x)
 
-    for i in range (14):
+    for i in range (15):
         if int(i) % 2 == 0:
             card[i] = int(card[i]) * 2
             if int(card[i]) > 9:
                 card[i] = splitadd(card[i])
-    merge = card[:14]
+    merge = card[:15]
     final = just_add(merge) + int(card[15])
     
     if final % 10 == 0:
@@ -32,8 +32,9 @@ def validate(x):
 if __name__ == "__main__":
     while True:
         detail = input("Enter the card number: ")
-        print(validate(detail))
-        print(validate(detail)[1])
+        ans = validate(detail)
+        check = ans[1]
+        print(ans, check)
         if "invalid" not in validate(detail):
             break
 
